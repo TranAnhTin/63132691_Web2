@@ -22,13 +22,14 @@ public class SinhVien {
 	public void setDiemTL(String diemTL) {
 		this.diemTL = diemTL;
 	}
-	public SinhVien() {
-		super();
-	}
 	public SinhVien(String maSoSV, String hoVaTen, String diemTL) {
 		this.maSoSV = maSoSV;
 		this.hoVaTen = hoVaTen;
 		this.diemTL = diemTL;
 	}
+	public SinhVien() {
+		super();
+	}
+
 	// Các getter, setter
 }
