@@ -13,7 +13,6 @@ import tin.ta.project_ck.Models.StudentModel;
 public class HomeController {
 	@GetMapping("/all")
 	public String getAll(Model model) {
-		model.addAttribute("dsSV", dsSV);
-		return "dsSV";
+		return "index";
 	}
 }
