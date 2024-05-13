@@ -2,7 +2,7 @@ package tin.ta.project_ck.Models;
 
 import jakarta.persistence.*;
 @Entity						// đánh dấu rằng đây là một entity
-@Table(name = "scores")	// chỉ định tên của bảng trong cơ sở dữ liệu.
+@Table(name = "diem")	// chỉ định tên của bảng trong cơ sở dữ liệu.
 public class ScoreModel {		// Tên lớp ta viết hoa chữ cái đầu
 	//----cho cột id-----------------------------------------------------------
     @Id						// đánh dấu trường id là khóa chính.
