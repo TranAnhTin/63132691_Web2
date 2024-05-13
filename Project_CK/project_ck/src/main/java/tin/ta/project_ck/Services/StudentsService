@@ -1,0 +1,12 @@
+package tin.ta.project_ck.Services;
+
+import java.util.List;
+import org.springframework.stereotype.Service;
+import tin.ta.project_ck.Models.StudentModel;;
+@Service
+public interface StudentService {
+	List<StudentModel> findAllStudent();
+	Customer findStudentByID(int id);
+    void addStudent(StudentModel students);
+    void deleteStudent(int id);
+}
