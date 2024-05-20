@@ -11,53 +11,51 @@
             <li><a href="/them" id="Add">Thêm Mới</a></li>
         </ul>
         <h2 class="text-center mb-4">Thêm Sinh Viên</h2>
-        <form>
+        <form action="/saveStudent" method="post">
             <div class="mb-3">
                 <label for="hoTen" class="form-label">Họ và Tên:</label>
-                <input type="text" class="form-control" id="hoTen" placeholder="Nhập họ và tên">
+                <input type="text" class="form-control" id="hoTen" name="hoTen" placeholder="Nhập họ và tên">
             </div>
             <div class="mb-3">
                 <label for="ngaySinh" class="form-label">Ngày Sinh:</label>
-                <input type="date" class="form-control" id="ngaySinh">
+                <input type="date" class="form-control" id="ngaySinh" name="ngaySinh">
             </div>
             <div class="mb-3">
                 <label for="lop" class="form-label">Lớp:</label>
-                <input type="text" class="form-control" id="lop" placeholder="Nhập lớp">
+                <input type="text" class="form-control" id="lop" name="lop" placeholder="Nhập lớp">
             </div>
             <div class="mb-3">
                 <label for="khoa" class="form-label">Khoa:</label>
-                <input type="text" class="form-control" id="khoa" placeholder="Nhập khoa">
+                <input type="text" class="form-control" id="khoa" name="khoa" placeholder="Nhập khoa">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Nhập email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email">
             </div>
             <div class="mb-3">
                 <label for="sdt" class="form-label">Số điện thoại:</label>
-                <input type="tel" class="form-control" id="sdt" placeholder="Nhập số điện thoại">
+                <input type="tel" class="form-control" id="sdt" name="sđth" placeholder="Nhập số điện thoại">
             </div>
             <div class="mb-3">
                 <label for="tenMH" class="form-label">Tên Môn Học:</label>
-                <input type="text" class="form-control" id="tenMH" placeholder="Nhập tên môn học">
+                <input type="text" class="form-control" id="tenMH" name="tenMH" placeholder="Nhập tên môn học">
             </div>
             <div class="mb-3">
                 <label for="diem" class="form-label">Điểm:</label>
-                <input type="number" step="0.01" class="form-control" id="diem" placeholder="Nhập điểm">
+                <input type="number" step="0.01" class="form-control" id="diem" name="score" placeholder="Nhập điểm">
             </div>
             <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
     </div>
     <script>
-		// Bắt sự kiện click vào thẻ <a> có ID là "Add"
-		document.getElementById("Add").addEventListener("click", function() {
-			// Chuyển hướng đến trang thêm sinh viên khi click vào thẻ <a>
-			window.location.href = "themSV.html";
-		});
-	</script>
-	<script>
-		document.getElementById("List").addEventListener("click", function() {
-			window.location.href = "index.html";
-		});
-	</script>
+        document.getElementById("Add").addEventListener("click", function() {
+            window.location.href = "themSV.html";
+        });
+    </script>
+    <script>
+        document.getElementById("List").addEventListener("click", function() {
+            window.location.href = "index.html";
+        });
+    </script>
 </body>
 </html>
