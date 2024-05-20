@@ -10,28 +10,26 @@ public class ScoreModel {		// Tên lớp ta viết hoa chữ cái đầu
                  //xác định cách khóa chính được sinh ra (ở đây là tự động tăng).
     @Column(name = "ScoreID")	// ánh xạ cột id của Bảng và thuộc tính id của Entiy
     private int ScoreID;
-    
-    @Column(name = "MSSV")  
-    private String MSSV;	
-    @Column(name = "Subject")
-    private String Subject;
     @Column(name = "Score")
     private String Score;
     @Column(name = "Date")
     private String Date;
-    @Column(name = "DTB")
-    private String DTB;
-
+    @ManyToOne
+    @JoinColumn(name = "MSSV")
+    private StudentModel students;
+    
+    @ManyToOne
+    @JoinColumn(name = "MonHocID")
+    private MonHocModel monhoc;
     // Constructors, getters, and setters
     // Constructors
     public ScoreModel() {}
 
-    public ScoreModel(String MSSV, String Subject,String Score,String Date,String DTB) {
-        this.MSSV = MSSV;
-        this.Subject = Subject;
+    public ScoreModel(StudentModel students, MonHocModel monhoc, String Score, String Date) {
+        this.students = students;
+        this.monhoc = monhoc;
         this.Score = Score;
         this.Date = Date;
-        this.DTB = DTB;
     }
 
     // Getters and setters
@@ -39,45 +37,39 @@ public class ScoreModel {		// Tên lớp ta viết hoa chữ cái đầu
         return ScoreID;
     }
 
-    public void setScoreId(int ScoreID) {
+    public void setScoreID(int ScoreID) {
         this.ScoreID = ScoreID;
     }
 
-    public String getMSSV() {
-        return MSSV;
+    public StudentModel getStudent() {
+        return students;
     }
 
-    public void setMSSV(String MSSV) {
-        this.MSSV = MSSV;
+    public void setStudent(StudentModel students) {
+        this.students = students;
     }
 
-    public String getSubject() {
-        return Subject;
+    public MonHocModel getMonHoc() {
+        return monhoc;
     }
 
-    public void setSubject(String Subject) {
-        this.Subject = Subject;
+    public void setMonHoc(MonHocModel monhoc) {
+        this.monhoc = monhoc;
     }
+
     public String getScore() {
         return Score;
     }
 
-    public void setScore(String Score) {
-        this.Score = Score;
+    public void setScore(String score) {
+        this.Score = score;
     }
+
     public String getDate() {
         return Date;
     }
 
-    public void setDate(String Date) {
-        this.Date = Date;
-    }
-    public String getDTB() {
-        return DTB;
-    }
-
-    public void setDTB(String DTB) {
-        this.DTB = DTB;
+    public void setDate(String date) {
+        this.Date = date;
     }
 }
-    

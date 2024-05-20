@@ -1,5 +1,5 @@
 package tin.ta.project_ck.Models;
-
+import java.util.Set;
 import jakarta.persistence.*;
 @Entity						// đánh dấu rằng đây là một entity
 @Table(name = "students")	// chỉ định tên của bảng trong cơ sở dữ liệu.
@@ -10,7 +10,12 @@ public class StudentModel {		// Tên lớp ta viết hoa chữ cái đầu
                  //xác định cách khóa chính được sinh ra (ở đây là tự động tăng).
     @Column(name = "MSSV")	// ánh xạ cột id của Bảng và thuộc tính id của Entiy
     private int MSSV;
-    
+    @OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
+    private Set<ScoreModel> scores;
+
+    @ManyToOne
+    @JoinColumn(name = "MonHocID")
+    private MonHocModel monHoc;
     @Column(name = "HoTen")  
     private String HoTen;	
     @Column(name = "NgaySinh")
@@ -23,6 +28,7 @@ public class StudentModel {		// Tên lớp ta viết hoa chữ cái đầu
     private String Email;
     @Column(name = "Sđth")
     private String Sđth;
+
 
     // Constructors, getters, and setters
     // Constructors
@@ -42,7 +48,7 @@ public class StudentModel {		// Tên lớp ta viết hoa chữ cái đầu
         return MSSV;
     }
 
-    public void setId(int MSSV) {
+    public void setMSSV(int MSSV) {
         this.MSSV = MSSV;
     }
 
@@ -83,14 +89,4 @@ public class StudentModel {		// Tên lớp ta viết hoa chữ cái đầu
         this.Sđth = Sđth;
     }
     
-
-//     // toString method (optional)
-//     @Override
-//     public String toString() {
-//         return "Customer{" +
-//                 "id=" + id +
-//                 ", name='" + name + '\'' +
-//                 ", address='" + address + '\'' +
-//                 '}';
-//     }
 }
