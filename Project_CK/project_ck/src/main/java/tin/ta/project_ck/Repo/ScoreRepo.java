@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 import tin.ta.project_ck.Models.ScoreModel;
 @Repository
 public interface ScoreRepo extends JpaRepository<ScoreModel, Integer>  {
+    List<ScoreModel> findByStudentId(Long studentId);
 }

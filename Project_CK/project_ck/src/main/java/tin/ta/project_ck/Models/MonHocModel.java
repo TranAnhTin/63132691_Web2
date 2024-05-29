@@ -1,53 +1,56 @@
 package tin.ta.project_ck.Models;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 import jakarta.persistence.*;
 @Entity						// đánh dấu rằng đây là một entity
-@Table(name = "monhoc")	// chỉ định tên của bảng trong cơ sở dữ liệu.
-public class MonHocModel {		// Tên lớp ta viết hoa chữ cái đầu
-	//----cho cột id-----------------------------------------------------------
-    @Id						// đánh dấu trường id là khóa chính.
+@Table(name = "MonHoc")	// chỉ định tên của bảng trong cơ sở dữ liệu.		// Tên lớp ta viết hoa chữ cái đầu
+public class MonHocModel {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-                 //xác định cách khóa chính được sinh ra (ở đây là tự động tăng).
-    @Column(name = "MonHocID")	// ánh xạ cột id của Bảng và thuộc tính id của Entiy
-    private int MonHocID;
+    private Long id;
     
-    @Column(name = "MaMH")  
-    private String MaMH;	
-    @Column(name = "TenMH")
-    private String TenMH;
-    @Column(name = "soTC")
-    private int soTC;
+    @Column(name = "name") 
+    private String name;
+    
+    @Column(name = "credit")
+    private int credit;
 
-    // Constructors, getters, and setters
-    // Constructors
-    public MonHocModel() {}
-
-    public MonHocModel(String TenMH,int soTC) {
-        this.TenMH = TenMH;
-        this.soTC = soTC;
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    private List<ScoreModel> grades;
+    
+    public Long getId() {
+        return id;
     }
 
-    // Getters and setters
-    public int getMonHocID() {
-        return MonHocID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setMonHocId(int MonHocID) {
-        this.MonHocID = MonHocID;
+    public String getName() {
+        return name;
     }
 
-    public String getTenMH() {
-        return TenMH;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTenMH(String TenMH) {
-        this.TenMH = TenMH;
+    public int getCredit() {
+        return credit;
     }
 
-    public int getsoTC() {
-        return soTC;
+    public void setCredit(int credit) {
+        this.credit = credit;
     }
 
-    public void setTC(int soTC) {
-        this.soTC = soTC;
+    public List<ScoreModel> getGrades() {
+        return grades;
     }
+
+    public void setGrades(List<ScoreModel> grades) {
+        this.grades = grades;
+    }
+    
+    // constructors, getters, setters
 }

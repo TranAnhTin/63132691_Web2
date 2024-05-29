@@ -9,37 +9,41 @@
 </head>
 <body  style="background-color:powderblue;">
 	<ul>
-		<li><a href="/ds" id="List">Danh Sách SV</a></li>
-		<li><a href="/them" id="Add">Thêm Mới</a></li>
+		<li><a href="/" id="List">Danh Sách SV</a></li>
+		<li><a href="/themSV" id="Add">Thêm Mới</a></li>
 	</ul>
 	<h1 style="text-align: center;">Danh sách SV</h1>
 	<table class="table table-bordered">
-		<thead class="table-light">
-			<tr>
-				<th class="fw-normal">MSSV</th>
-				<th class="fw-normal">Họ Tên</th>
-				<th class="fw-normal">Lớp</th>
-				<th class="fw-normal">Khoa</th>
-				<th class="fw-normal">Email</th>
-				<th class="fw-normal">Số điện thoại</th>
-				<th class="fw-normal">Môn</th>
-				<th class="fw-normal">Điểm</th>
-				<th class="fw-normal">Hành động</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="st : ${students}">
-				<td th:text="${st.MSSV}"></td>
-				<td th:text="${st.HoTen}"></td>
-				<td th:text="${st.Lop}"></td>
-				<td th:text="${st.Khoa}"></td>
-				<td th:text="${st.Email}"></td>
-				<td th:text="${st.Sđth}"></td>
-				<td th:text="${st.monHoc.tenMH}"></td>
-                <td th:text="${st.scores.stream().mapToDouble(score -> Double.parseDouble(score.dtb)).average().orElse(0.0)}"></td>
-				<td>Hành động</td>
-			</tr>
-		</tbody>
+		
+<thead class="table-light">
+	<tr>
+		<th class="fw-normal">Name</th>
+		<th class="fw-normal">Student Code</th>
+		<th class="fw-normal">Email</th>
+		<th class="fw-normal">Phone</th>
+		<th class="fw-normal">Subjects</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="student : ${students}">
+		<td th:text="${student.name}"></td>
+		<td th:text="${student.studentCode}"></td>
+		<td th:text="${student.email}"></td>
+		<td th:text="${student.phone}"></td>
+		<td>
+			<table class="table table-bordered">
+				<thead>
+				</thead>
+				<tbody>
+				<tr th:each="grade : ${student.grades}">
+					<td th:text="${grade.subject.name}"></td>
+					<td th:text="${grade.score}"></td>
+				</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	</tbody>
 	</table>
 	<script>
 		// Bắt sự kiện click vào thẻ <a> có ID là "Add"

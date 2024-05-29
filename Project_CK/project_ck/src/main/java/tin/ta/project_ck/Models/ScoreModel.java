@@ -2,74 +2,54 @@ package tin.ta.project_ck.Models;
 
 import jakarta.persistence.*;
 @Entity						// đánh dấu rằng đây là một entity
-@Table(name = "diem")	// chỉ định tên của bảng trong cơ sở dữ liệu.
+@Table(name = "Score")	// chỉ định tên của bảng trong cơ sở dữ liệu.
 public class ScoreModel {		// Tên lớp ta viết hoa chữ cái đầu
-	//----cho cột id-----------------------------------------------------------
-    @Id						// đánh dấu trường id là khóa chính.
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-                 //xác định cách khóa chính được sinh ra (ở đây là tự động tăng).
-    @Column(name = "ScoreID")	// ánh xạ cột id của Bảng và thuộc tính id của Entiy
-    private int ScoreID;
-    @Column(name = "Score")
-    private String Score;
-    @Column(name = "Date")
-    private String Date;
-    @ManyToOne
-    @JoinColumn(name = "MSSV")
-    private StudentModel students;
+    private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "MonHocID")
-    private MonHocModel monhoc;
-    // Constructors, getters, and setters
-    // Constructors
-    public ScoreModel() {}
+    @JoinColumn(name = "student_id") 
+    private StudentModel student;
+    
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private MonHocModel subject;
+    
+    @Column(name = "score")
+    private double score;
 
-    public ScoreModel(StudentModel students, MonHocModel monhoc, String Score, String Date) {
-        this.students = students;
-        this.monhoc = monhoc;
-        this.Score = Score;
-        this.Date = Date;
+    public Long getId() {
+        return id;
     }
 
-    // Getters and setters
-    public int getScoreID() {
-        return ScoreID;
-    }
-
-    public void setScoreID(int ScoreID) {
-        this.ScoreID = ScoreID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public StudentModel getStudent() {
-        return students;
+        return student;
     }
 
-    public void setStudent(StudentModel students) {
-        this.students = students;
+    public void setStudent(StudentModel student) {
+        this.student = student;
     }
 
-    public MonHocModel getMonHoc() {
-        return monhoc;
+    public MonHocModel getSubject() {
+        return subject;
     }
 
-    public void setMonHoc(MonHocModel monhoc) {
-        this.monhoc = monhoc;
+    public void setSubject(MonHocModel subject) {
+        this.subject = subject;
     }
 
-    public String getScore() {
-        return Score;
+    public double getScore() {
+        return score;
     }
 
-    public void setScore(String score) {
-        this.Score = score;
+    public void setScore(double score) {
+        this.score = score;
     }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        this.Date = date;
-    }
+    
+    // constructors, getters, setters
 }

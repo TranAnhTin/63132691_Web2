@@ -18,4 +18,11 @@ public class StudentServiceImpl {
     public List<StudentModel> getAllStudents() {
         return studentRepository.findAll();
     }
+    public StudentModel getStudentById(Integer id) {
+        return studentRepository.findById(id).orElse(null);
+    }
+
+    public void deleteStudent(Integer id) {
+        studentRepository.deleteById(id);
+    }
 }
