@@ -86,6 +86,7 @@ public class HomeController {
         model.addAttribute("student", student);
         return "editStudent";
     }
+
     @PostMapping("/updateSV/{id}")
     public String updateStudent(@PathVariable("id") Long id, @ModelAttribute("student") StudentModel updatedStudent) {
         studentServiceImpl.updateStudent(id, updatedStudent);

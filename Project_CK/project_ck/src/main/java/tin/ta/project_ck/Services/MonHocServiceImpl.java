@@ -19,11 +19,11 @@ public class MonHocServiceImpl {
     public List<MonHocModel> getAllMonHoc() {
         return monHocRepo.findAll();
     }
-    public MonHocModel getStudentById(Integer id) {
+    public MonHocModel getStudentById(Long id) {
         return monHocRepo.findById(id).orElse(null);
     }
 
-    public void deleteStudent(Integer id) {
+    public void deleteStudent(Long id) {
         monHocRepo.deleteById(id);
     }
 }

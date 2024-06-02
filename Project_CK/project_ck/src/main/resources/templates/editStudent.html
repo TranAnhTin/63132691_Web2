@@ -37,8 +37,11 @@
                 <tbody>
                     <tr th:each="grade, iterStat : ${student.grades}">
                         <td th:text="${grade.subject.name}"></td>
-                        <td><input type="number" th:field="*{grades[__${iterStat.index}__].score}" class="form-control" required></td>
-                    </tr>
+                        <td>
+                            <input type="hidden" th:field="*{grades[__${iterStat.index}__].id}" th:value="${grade.id}" />
+                            <input type="hidden" th:field="*{grades[__${iterStat.index}__].subject.id}" th:value="${grade.subject.id}" />
+                            <input type="number" th:field="*{grades[__${iterStat.index}__].score}" class="form-control" required>
+                        </td>                    </tr>                    
                 </tbody>
             </table>
         </div>

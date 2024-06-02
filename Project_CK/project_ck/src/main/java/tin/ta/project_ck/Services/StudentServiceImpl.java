@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+import tin.ta.project_ck.Models.ScoreModel;
 import tin.ta.project_ck.Models.StudentModel;
 import tin.ta.project_ck.Repo.SinhVienRepo;
 
@@ -40,8 +41,19 @@ public class StudentServiceImpl {
             existingStudent.setStudentCode(updatedStudent.getStudentCode());
             existingStudent.setEmail(updatedStudent.getEmail());
             existingStudent.setPhone(updatedStudent.getPhone());
-            existingStudent.setGrades(updatedStudent.getGrades()); // Cập nhật điểm số
-            // Lưu sinh viên đã cập nhật vào cơ sở dữ liệu
+
+            List<ScoreModel> updatedGrades = updatedStudent.getGrades();
+            List<ScoreModel> existingGrades = existingStudent.getGrades();
+    
+            for (ScoreModel updatedGrade : updatedGrades) {
+                for (ScoreModel existingGrade : existingGrades) {
+                    if (existingGrade.getId().equals(updatedGrade.getId())) {
+                        // Cập nhật điểm số của môn học hiện có
+                        existingGrade.setScore(updatedGrade.getScore());
+                        break;
+                    }
+                }
+            }            // Lưu sinh viên đã cập nhật vào cơ sở dữ liệu
             studentRepository.save(existingStudent);
         }
     }
