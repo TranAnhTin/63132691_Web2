@@ -13,8 +13,8 @@ public class MonHocServiceImpl {
     @Autowired
     private MonHocRepo monHocRepo;
 
-    public void saveMonHoc(MonHocModel monhoc) {
-        monHocRepo.save(monhoc);
+    public MonHocModel saveMonHoc(MonHocModel monhoc) {
+        return monHocRepo.save(monhoc);
     }
     public List<MonHocModel> getAllMonHoc() {
         return monHocRepo.findAll();

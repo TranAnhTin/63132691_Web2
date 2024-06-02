@@ -42,7 +42,7 @@
                     <td th:text="${subject.name}"></td>
                     <td>
                         <input type="number" th:field="*{grades[__${itemStat.index}__].score}" min="0" max="10" step="0.1"/>
-                        <input type="hidden" th:field="*{grades[__${itemStat.index}__].subject}" th:value="${subject.id}"/>
+                        <input type="hidden" th:field="*{grades[__${itemStat.index}__].subject.id}" />
                     </td>
                 </tr>
             </tbody>
